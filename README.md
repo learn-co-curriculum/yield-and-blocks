@@ -6,7 +6,7 @@
 2. Practice using `yield` with blocks.
 3. Gain a deeper understanding of the common iterator `#each`.
 
-## Calling a Method with a Block
+## Calling a method with a block
 
 A block is a bit of code enclosed in `do`/`end` keywords, or enclosed in curly brackets, `{}`. We've seen methods like `#each` and `#collect` being called with blocks. 
 
@@ -36,7 +36,7 @@ But how do `#each`, and the other iterators like `#collect`, actually pass, or y
 
 Let's take a closer look at `yield` and try to build our own custom methods that utilize it. 
 
-## The `yield` Keyword
+## The `yield` keyword
 
 The `yield` keyword, when used inside the body of a method, will allow you to call that method with a block and pass, or "yield", to that block. Think of the `yield` keyword as saying "stop executing the code in this method and instead execute the code in the block. Then, return to the code in the method." 
 
@@ -73,7 +73,7 @@ When we call `yielding` with the above block, we will output:
 ```
 
 
-#### Yielding With Parameters
+#### `yield`ing with parameters
 
 The `yield` keyword can take parameters. In other words, if you use yield and give it an argument, it will pass that argument to the block and that data will become available to the code in the block. 
 
@@ -116,7 +116,7 @@ So, the above method call will output:
 
 The syntax inside the block might look familiar—it is how we identify index items in a block when we call `#each` on an array and pass a block to that method call. 
 
-## Code Along: Building Our Own Method with Yield
+## Code-Along: Building our own method with `yield`
 
 Let's revisit our earlier example of a call to the `#each` method that only `puts` out a greeting if the word we pass into the block starts with the letter `"T"`. 
 
@@ -159,13 +159,13 @@ def hello_t(array)
 end
 ```
 
-##### `while` Loop Review
+##### `while` loop review
 
 In the code above, we set a counter variable, `i`, equal to `0`. We start our `while` loop and tell it to execute the code in between the `while` and `end` keywords as long as `i` is less than the length of the array. Inside our `while` loop, we increment the value of our `i` variable. 
 
 Now, we need to tell our method to actually `yield` each member of the array, as we loop over it, to the block we will call our `#hello_t` method with. 
 
-#### Step 3: Yielding to the Block
+#### Step 3: Yielding to the block
 
 The first time through our `while` loop, `i` is set equal to zero. The second time through the loop, `i` is set equal to `1`, and so on. This will go until until `i` is equal to the last index number of our array. 
 
@@ -183,7 +183,7 @@ end
 
 Here, we use the `[]`, bracket, method to grab the value of each successive index element as we proceed through our `while` loop, and `yield` it to a block. Now we're ready to call our method:
 
-#### Step 4: Calling Our Method
+#### Step 4: Calling our method
 
 Let's call our method with an argument of the following array:
 
@@ -208,7 +208,7 @@ Hi, Tom
 
 We call our method with the argument of our array and accompany that method call with a block that contains the `name` parameter and the desired code to `puts` out a greeting if the person's name begins with the letter `"T"`. Good job!
 
-#### Step 5: Passing Our Test
+#### Step 5: Passing our test
 
 Go ahead and run the test suite by typing `learn` into your terminal in the directory of this lesson. You'll see that our test is expecting us to return the original array but our method is currently returning nil.
 
@@ -253,7 +253,7 @@ end
 
 Our `#hello_t` method will `yield` each element of the array to the block if a block is present. Otherwise, it will `puts` out a helpful phrase. 
 
-## Enumerators Under the Hood
+## Enumerators under the hood
 
 You've already worked with enumerator methods like `#each`, `#collect` and others. These methods are called on collections, like arrays. They take blocks as their arguments and *yield* each element of the collection to the block, allowing the code in the block to be applied to each element of the collection. 
 
