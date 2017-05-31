@@ -64,19 +64,18 @@ yielding do
 end
 ```
 
-When we call `yielding` with the above block, we will output:
+When we call `#yielding` with the above block, we will output:
 
 ```bash
 the program is executing the code inside the method
 the method has yielded to the block!
 now we are back in the method
-nil
 ```
 
 
 #### `yield`ing with parameters
 
-The `yield` keyword can take parameters. In other words, if you use yield and give it an argument, it will pass that argument to the block and that data will become available to the code in the block.
+The `yield` keyword can take parameters. In other words, if you use `yield` and give it an argument, it will pass that argument to the block and that data will become available to the code in the block.
 
 For example:
 
@@ -99,6 +98,7 @@ We call our method with an argument:
 ```ruby
 yielding_with_arguments(2)
 ```
+
 and a block:
 
 ```ruby
@@ -109,10 +109,10 @@ The `|i|` (placeholder variable in between pipes) is our placeholder for the yie
 
 So, the above method call will output:
 
-```ruby
-"the program is executing the code inside the method"
+```bash
+the program is executing the code inside the method
 4
-"now we are back in the method"
+now we are back in the method
 ```
 
 The syntax inside the block might look familiar — it is how we identify index items in a block when we call `#each` on an array and pass a block to that method call.
