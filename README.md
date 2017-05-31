@@ -168,7 +168,7 @@ Now, as we iterate through the array, we need to `yield` each member of the arra
 
 #### Step 3: Yielding to the block
 
-The first time through our `while` loop, `i` is set equal to zero. The second time through the loop, `i` is set equal to `1`, and so on. This will go until until `i` is equal to the last index number of our array.
+The first time through our `while` loop, `i` is equal to `0`. The second time through the loop, `i` is `1`, and so on. This will continue until `i` is equal to the index number of the last item in our array.
 
 So, during each step of the `while` loop, `i` equals a given index number of our array. We can use this information to yield each successive value stored in the array to the passed-in block:
 
