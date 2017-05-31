@@ -202,7 +202,7 @@ hello_t(["Tim", "Tom", "Jim"]) do |name|
 end
 ```
 
-Copy and paste the above method call into your `lib/hello.rb` file and run the file with `ruby lib/hello.rb` in your terminal. You should see the following:
+Copy and paste the above method call into your `lib/hello.rb` file (paste it below the line that reads `# call your method here!`). Then, run the file with the `ruby lib/hello.rb` command in your terminal. You should see the following:
 
 ```bash
 Hi, Tim
