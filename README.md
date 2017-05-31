@@ -162,7 +162,7 @@ end
 
 ##### `while` loop review
 
-In the code above, we set a counter variable, `i`, equal to `0`. We start our `while` loop and tell it to execute the code in between the `while` and `end` keywords as long as `i` is less than the length of the array. Inside our `while` loop, we increment the value of our `i` variable.
+In the code above, we set a counter variable, `i`, equal to `0`. We start our `while` loop and tell it to execute the code in between the `while` and `end` keywords as long as `i` is *less* than the length of the array. Inside our `while` loop, we increment the value of `i`.
 
 Now, we need to tell our method to actually `yield` each member of the array, as we loop over it, to the block we will call our `#hello_t` method with.
 
@@ -170,7 +170,7 @@ Now, we need to tell our method to actually `yield` each member of the array, as
 
 The first time through our `while` loop, `i` is set equal to zero. The second time through the loop, `i` is set equal to `1`, and so on. This will go until until `i` is equal to the last index number of our array.
 
-So, inside each step of the `while` loop, `i` equals a given index number of our array. We can use this information to yield each successive value stored in our array, to our block.
+So, during each step of the `while` loop, `i` equals a given index number of our array. We can use this information to yield each successive value stored in the array to the passed-in block:
 
 ```ruby
 def hello_t(array)
