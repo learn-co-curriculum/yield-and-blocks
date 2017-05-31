@@ -164,7 +164,7 @@ end
 
 In the code above, we set a counter variable, `i`, equal to `0`. We start our `while` loop and tell it to execute the code in between the `while` and `end` keywords as long as `i` is *less* than the length of the array. Inside our `while` loop, we increment the value of `i`.
 
-Now, we need to tell our method to actually `yield` each member of the array, as we loop over it, to the block we will call our `#hello_t` method with.
+Now, as we iterate through the array, we need to `yield` each member of the array to the block that we'll pass to our `#hello_t` method.
 
 #### Step 3: Yielding to the block
 
