@@ -243,10 +243,12 @@ Let's refactor our `#hello` method so that it can be called either with or witho
 def hello_t(array)
   if block_given?
     i = 0
+
     while i < array.length
       yield(array[i])
       i = i + 1
     end
+
     array
   else
     puts "Hey! No block was given!"
@@ -254,15 +256,15 @@ def hello_t(array)
 end
 ```
 
-**The `block_given?` method** returns true if the method that contains `block_given?` is called with a block and false if it is not.
+**The `block_given?` method** returns `true` if the method that contains `block_given?` is called with a block and `false` if it is not.
 
 Our `#hello_t` method will `yield` each element of the array to the block if a block is present. Otherwise, it will `puts` out a helpful phrase.
 
 ## Enumerators under the hood
 
-You've already worked with enumerator methods like `#each`, `#collect` and others. These methods are called on collections, like arrays. They take blocks as their arguments and *yield* each element of the collection to the block, allowing the code in the block to be applied to each element of the collection.
+You've already worked with enumerator methods like `#each` and `#collect`. These methods are called on collections, such as arrays. They take blocks as their arguments and *yield* each element of the collection to the block, allowing the code in the block to be applied to each element of the collection.
 
-In the code-along above, we built our own implementation of the `#each` method. We used `while` to loop, or iterate, over each element of the array and passed, or yielded, each of those elements to an accompanying block. That block used parameters, `|i|`, to set a variable, `i`, equal to whatever value is yielded into the block at each successive step of the iteration. That block also contained code to execute with each yield element in turn.
+In the code-along above, we built our own implementation of the `#each` method. We used `while` to iterate through each element of the array and passed, or `yield`ed, each successive element to an accompanying block. That block used a parameter placeholder, `|i|`, to set a variable, `i`, equal to whatever value is `yield`ed into the block at each step of the iteration. That block also contained code to execute with each `yield`ed element in turn.
 
 You can read more about the `yield` keyword and blocks in Ruby from the resources below:
 
