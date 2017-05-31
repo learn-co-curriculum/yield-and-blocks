@@ -184,11 +184,11 @@ def hello_t(array)
 end
 ```
 
-Here, we use the `[]`, bracket, method to grab the value of each successive index element as we proceed through our `while` loop, and `yield` it to a block. Now we're ready to call our method:
+Here, we use the bracket (`[]`) method to grab the value of each successive index element as we proceed through our `while` loop, `yield`ing each to a block. Now we're ready to call our method:
 
 #### Step 4: Calling our method
 
-Let's call our method with an argument of the following array:
+Let's invoke our method, passing in the following array as an argument:
 
 ```ruby
 ["Tim", "Tom", "Jim"]
@@ -209,11 +209,11 @@ Hi, Tim
 Hi, Tom
 ```
 
-We call our method with the argument of our array and accompany that method call with a block that contains the `name` parameter and the desired code to `puts` out a greeting if the person's name begins with the letter `"T"`. Good job!
+We're invoking our method with the array of names as an argument and accompanying that method call with a block that accepts a `|name|` parameter. If the passed-in name begins with the letter `"T"`, the block will `puts` out a greeting. Good job!
 
 #### Step 5: Passing our test
 
-Go ahead and run the test suite by typing `learn` into your terminal in the directory of this lesson. You'll see that our test is expecting us to return the original array but our method is currently returning nil.
+Go ahead and run the test suite by typing `learn` into your terminal in this lesson's directory. You'll see that our test expects us to return the original array, but our method is currently returning `nil`.
 
 How can we fix this? We can tell our `#hello_t` method to return the original array:
 
@@ -230,7 +230,7 @@ def hello_t(array)
 end
 ```
 
-Here, we tell our method to return the original array simply by having that array be the last line of the method. Whatever is evaluated last in a method will be it's return value. If you run the test again, you should be passing.
+Here, we tell our method to return the original array simply by having that array be the last line of the method. Whatever is evaluated last in a method will be the return value for the whole method. If you run the test again, you should be passing.
 
 
 ### Advanced: Defining a method to optionally take a block
