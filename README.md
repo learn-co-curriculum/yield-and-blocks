@@ -209,50 +209,77 @@ Hi, Tim
 Hi, Tom
 ```
 
-We're calling our method with the array of names as an argument and accompanying that method call with a block that accepts a `|name|` parameter. If the passed-in name begins with the letter `"T"`, the block will `puts` out a greeting. Good job!
+We're calling our method with the array of names as an argument and accompanying that method call with a block that accepts a `|name|` parameter. If the passed-in name begins with the letter `"T"`, the block will `puts` out a greeting. Good job! Before moving on to Step 5, be sure to remove the above method call from lib/hello.rb.
 
 #### Step 5: Passing our test
 
-Go ahead and run the test suite by typing `learn` into your terminal in this lesson's directory. You'll see that our test expects us to return the original array, but our method is currently returning `nil`:
+Go ahead and run the test suite by typing `learn` into your terminal in this lesson's directory. Below you'll see that our test expects us to only pass names that start with `"T"` to the block and, similarly, return an array with only elements that start with `"T"`. Also, `#hello_t` should be case insensitive. 
 
 ```
 Failures:
 
-  1) #hello_t returns the original array
-     Failure/Error:
-       expect( hello_t(names){ |name| puts name } )
-         .to eq(names)
+  1) #hello_t only passes names that start with 'T' to the block
+     Failure/Error: expect{hello_t(names){|name| puts "Hi, #{name}" }}.to output("Hi, Tim\nHi, Tom\n").to_stdout
+     
+       expected block to output "Hi, Tim\nHi, Tom\n" to stdout, but output "Hi, Tim\nHi, Tom\nHi, Jim\n"
+       Diff:
+       @@ -1,3 +1,4 @@
+        Hi, Tim
+        Hi, Tom
+       +Hi, Jim
+       
+     # ./spec/hello_spec.rb:6:in `block (2 levels) in <top (required)>'
 
-       expected: ["Tim", "Tom", "Jim"]
+  2) #hello_t returns an array with only names that start with 'T'
+     Failure/Error: expect(hello_t(names) {|name| puts "Hi, #{name}" }).to eq(["Tim", "Tom"])
+     
+       expected: ["Tim", "Tom"]
             got: nil
-
+     
        (compared using ==)
-     # ./spec/hello_spec.rb:13:in `block (2 levels) in <top (required)>'
+     # ./spec/hello_spec.rb:10:in `block (2 levels) in <top (required)>'
 
-Finished in 0.01509 seconds (files took 0.1233 seconds to load)
-2 examples, 1 failure
+  3) #hello_t is case insensitive
+     Failure/Error: expect{hello_t(other_names){|name| puts "Hi, #{name}" }}.to output("Hi, tim\nHi, tom\n").to_stdout
+     
+       expected block to output "Hi, tim\nHi, tom\n" to stdout, but output "Hi, tim\nHi, tom\nHi, jim\n"
+       Diff:
+       @@ -1,3 +1,4 @@
+        Hi, tim
+        Hi, tom
+       +Hi, jim
+       
+     # ./spec/hello_spec.rb:15:in `block (2 levels) in <top (required)>'
+
+Finished in 0.02508 seconds (files took 0.13678 seconds to load)
+3 examples, 3 failures
 
 Failed examples:
 
-rspec ./spec/hello_spec.rb:12 # #hello_t returns the original array
+rspec ./spec/hello_spec.rb:5 # #hello_t only passes names that start with 'T' to the block
+rspec ./spec/hello_spec.rb:9 # #hello_t returns an array with only names that start with 'T'
+rspec ./spec/hello_spec.rb:13 # #hello_t is case insensitive
 ```
 
-How can we fix this? We can tell our `#hello_t` method to return the original array:
+How can we fix this? We can tell our #hello_t method to only run the block if the ith element starts with “T” and we can populate an empty array only with names that satisfy the same condition. We also want to tell #hello_t to return this new array. To ensure #hello_t is case insensitive, we can simply add another condition.
 
 ```ruby
 def hello_t(array)
   i = 0
+  new_array = []
 
   while i < array.length
-    yield(array[i])
-    i = i + 1
+    if array[i].start_with?("T") || array[i].start_with?(“t”)
+      yield(array[i])
+      new_array << array[i]
+    end
+    i += 1
   end
-
-  array
+  new_array
 end
 ```
 
-Here, we tell our method to return the original array simply by having that array be the last line of the method. Whatever is evaluated last in a method will be the return value for the whole method. If you run the test again, you should be passing.
+Here, we tell our method to return the new array simply by having that array be the last line of the method. Whatever is evaluated last in a method will be the return value for the whole method. If you run the test again, you should be passing.
 
 
 ### Advanced: Defining a method to optionally take a block
@@ -294,4 +321,4 @@ You can read more about the `yield` keyword and blocks in Ruby from the resource
 * [Reactive's Tips](http://www.reactive.io/tips/) - [Understanding Ruby Blocks, Procs, and Lambdas](http://www.reactive.io/tips/2008/12/21/understanding-ruby-blocks-procs-and-lambdas)
 * [Mix&Go](https://mixandgo.com/) - [Mastering-ruby-blocks-in-less-than-5-minutes](https://mixandgo.com/blog/mastering-ruby-blocks-in-less-than-5-minutes)
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/yield-and-blocks' title='Yield and Blocks'>Yield and Blocks</a> on Learn.co and start learning to code for free.</p>
+<p class='util--hide'>View <a href='https://learn.co/lessons/yield-and-blocks'>Yield and Blocks</a> on Learn.co and start learning to code for free.</p>
